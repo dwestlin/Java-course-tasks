@@ -32,15 +32,8 @@ public class Rectangle extends Shape {
 	public double getWidth() throws NoEndPointException
 	{		
 		try{
-			double width;
-			if(super.points.get(0).getValueX() > super.points.get(1).getValueX()) {
-				width = super.points.get(0).getValueX() - super.points.get(1).getValueX();
-				return width;
-			}
-			else {
-				width = super.points.get(1).getValueX() - super.points.get(0).getValueX();
-				return width;
-			}
+			return Math.abs(points.get(0).getX() - points.get(1).getX());
+			
 		}catch(IndexOutOfBoundsException e){ throw new NoEndPointException("The rectangle has no end point, it's width can not be calculated");	}
 		
 	
@@ -51,15 +44,7 @@ public class Rectangle extends Shape {
 	{
 		
 		try{
-			double height;
-			if(super.points.get(0).getValueY() > super.points.get(1).getValueY()) {
-				height = super.points.get(0).getValueY() - super.points.get(1).getValueY();
-				return height;
-			}
-			else {
-				height = super.points.get(1).getValueY() - super.points.get(0).getValueY();
-				return height;
-			}
+			return Math.abs(points.get(0).getY() - points.get(1).getY());
 		}catch(IndexOutOfBoundsException e){ throw new NoEndPointException("The rectangle has no end point, it's height can not be calculated");	}
 	}
 

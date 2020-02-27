@@ -15,7 +15,7 @@ import java.awt.Graphics;
 
 public class Circle extends Shape{
 
-	final double pi = 3.14;
+	final double PI = 3.14;
 	
 	
 	Circle(Point p, String color){
@@ -34,41 +34,12 @@ public class Circle extends Shape{
 		if(super.points[1] == null)
 			return -1;
 		else {
-			double squareRadius;
-			double xCord;
-			double yCord;
-			double radius;
-			
-			if(super.points[0].getValueX() > super.points[1].getValueX()) {
-				xCord = super.points[0].getValueX() - super.points[1].getValueX();
-				if(super.points[0].getValueY() > super.points[1].getValueY())
-					yCord = super.points[0].getValueY() - super.points[1].getValueY();
-				else {
-					yCord = super.points[1].getValueY() - super.points[0].getValueY();
-				}
-				squareRadius = (yCord*yCord)+(xCord*xCord);
-				
-				radius = Math.sqrt(squareRadius);
-				return radius;
-					
-			}
-			else {
-				xCord = super.points[1].getValueX() - super.points[0].getValueX();
-				if(super.points[0].getValueY() > super.points[1].getValueY())
-					yCord = super.points[0].getValueY() - super.points[1].getValueY();
-				else {
-					yCord = super.points[1].getValueY() - super.points[0].getValueY();
-				}
-			}
-			
-			squareRadius = (yCord*yCord)+(xCord*xCord);
-			
-			radius = Math.sqrt(squareRadius);
-			return radius;
-		}
-			
 		
-		
+			double x = Math.abs(super.points[0].getX() - super.points[1].getX());
+			double y = Math.abs(super.points[0].getY() - super.points[1].getY());
+			
+		    return Math.sqrt(((Math.pow(x, 2) + Math.pow(y, 2))));
+		}			
 	}
 
 	@Override
@@ -90,7 +61,7 @@ public class Circle extends Shape{
 		if(super.points[1] == null)
 			return -1;
 		else {
-			return (getRadius()*2)*pi;
+			return getRadius()*2*PI;
 		}
 	}
 
@@ -100,7 +71,7 @@ public class Circle extends Shape{
 		if(super.points[1] == null)
 			return -1;
 		else {
-			return (getRadius()*getRadius())*pi;
+			return Math.pow(getRadius(), 2)*PI;
 		}
 	}
 	

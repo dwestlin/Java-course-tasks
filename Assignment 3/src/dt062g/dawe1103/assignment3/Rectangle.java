@@ -27,36 +27,21 @@ public class Rectangle extends Shape {
 
 	public double getWidth() throws NoEndPointException
 	{
-		try{
-			double width;
-			if(super.points[0].getValueX() > super.points[1].getValueX()) {
-				width = super.points[0].getValueY() - super.points[1].getValueY();
-				return width;
-			}
-			else {
-				width = super.points[1].getValueY() - super.points[0].getValueY();
-				return width;
-			}
-		}catch(NullPointerException e){ throw new NoEndPointException("The rectangle has no end point, it's width can not be calculated");	}
 
+		if(points[1] == null) {
+			 throw new NoEndPointException("The rectangle has no end point, it's width can not be calculated");
+		}
+		return Math.abs(points[0].getX() - points[1].getX());
 
 	}
 
 
 	public double getHeight() throws NoEndPointException
 	{
-
-		try{
-			double height;
-			if(super.points[0].getValueX() > super.points[1].getValueX()) {
-				height = super.points[0].getValueY() - super.points[1].getValueY();
-				return height;
-			}
-			else {
-				height = super.points[1].getValueY() - super.points[0].getValueY();
-				return height;
-			}
-		}catch(NullPointerException e){ throw new NoEndPointException("The figure has no end point, it's height can not be calculated");	}
+		if(points[1] == null) {
+			 throw new NoEndPointException("The rectangle has no end point, it's height can not be calculated");
+		}
+		return Math.abs(points[0].getY() - points[1].getY());
 	}
 
 
@@ -76,11 +61,9 @@ public class Rectangle extends Shape {
 
 	@Override
 	public double getCircumference() throws NoEndPointException{
-
-
 		try {
 			return (getHeight()*2)+(getWidth()*2);
-		}catch(NullPointerException e){ throw new NoEndPointException("The figure has no end point, it's circumference can not be calculated");}
+		}catch(NullPointerException e){ throw new NoEndPointException("The the rectangle has no end point, it's circumference can not be calculated");}
 
 	}
 
@@ -89,7 +72,7 @@ public class Rectangle extends Shape {
 	public double getArea() throws NoEndPointException{
 		try {
 			return getHeight()*getWidth();
-		}catch(NullPointerException e){ throw new NoEndPointException("The figure has no end point, it's area can not be calculated");}
+		}catch(NullPointerException e){ throw new NoEndPointException("The rectangle has no end point, it's area can not be calculated");}
 	}
 
 

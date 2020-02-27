@@ -17,7 +17,7 @@ import dt062g.dawe1103.assignment4.NoEndPointException;
 
 public class Circle extends Shape{
 
-	final double pi = 3.14;
+	final double PI = 3.14;
 	
 	
 	Circle(Point p, String color){
@@ -34,35 +34,14 @@ public class Circle extends Shape{
 	public double getRadius() throws NoEndPointException {
 			
 			try {
-				double squareRadius;
-				double xCord;
-				double yCord;
-				double radius;
-
-				if(super.points.get(0).getValueX() > super.points.get(1).getValueX()) {
-					xCord = super.points.get(0).getValueX() - super.points.get(1).getValueX();
-					if(super.points.get(0).getValueY() > super.points.get(1).getValueY())
-						yCord = super.points.get(0).getValueY() - super.points.get(1).getValueY();
-					else {
-						yCord = super.points.get(1).getValueY() - super.points.get(0).getValueY();
-					}
-					squareRadius = (yCord*yCord)+(xCord*xCord);
-					
-					radius = Math.sqrt(squareRadius);
-					return radius;
-						
-				}
+				if(super.points.get(1) == null)
+					throw new NoEndPointException("The circle has no end point, it's radius can not be calculated");
 				else {
-					xCord = super.points.get(1).getValueX() - super.points.get(0).getValueX();
-					if(super.points.get(0).getValueY() > super.points.get(1).getValueY())
-						yCord = super.points.get(0).getValueY() - super.points.get(1).getValueY();
-					else {
-						yCord = super.points.get(1).getValueY() - super.points.get(0).getValueY();
-					}
-					squareRadius = (yCord*yCord)+(xCord*xCord);
+				
+					double x = Math.abs(super.points.get(0).getX() - super.points.get(1).getX());
+					double y = Math.abs(super.points.get(0).getY() - super.points.get(1).getY());
 					
-					radius = Math.sqrt(squareRadius);
-					return radius;
+				    return Math.sqrt(((Math.pow(x, 2) + Math.pow(y, 2))));		
 				}
 			}catch(IndexOutOfBoundsException e){ throw new NoEndPointException("The circle has no end point, it's radius can not be calculated");}
 		}
@@ -87,7 +66,7 @@ public class Circle extends Shape{
 	public double getCircumference() throws NoEndPointException {
 		
 		try {
-			return (getRadius()*2)*pi;
+			return (getRadius()*2)*PI;
 		}catch(NullPointerException e){ throw new NoEndPointException("The circle has no end point, it's circumference can not be calculated");}
 	}
 
@@ -96,7 +75,7 @@ public class Circle extends Shape{
 	public double getArea() throws NoEndPointException {
 
 		try {
-			return (getRadius()*getRadius())*pi;
+			return (getRadius()*getRadius())*PI;
 		}catch(NullPointerException e){ throw new NoEndPointException("The circle has no end point, it's area can not be calculated");}
 	}
 	

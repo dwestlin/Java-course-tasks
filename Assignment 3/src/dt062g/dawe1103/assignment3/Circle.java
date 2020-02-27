@@ -29,40 +29,16 @@ public class Circle extends Shape{
 	}
 
 
-	public double getRadius() throws NoEndPointException {
-
-			try {
-				double squareRadius;
-				double xCord;
-				double yCord;
-				double radius;
-
-				if(super.points[0].getValueX() > super.points[1].getValueX()) {
-					xCord = super.points[0].getValueX() - super.points[1].getValueX();
-					if(super.points[0].getValueY() > super.points[1].getValueY())
-						yCord = super.points[0].getValueY() - super.points[1].getValueY();
-					else {
-						yCord = super.points[1].getValueY() - super.points[0].getValueY();
-					}
-					squareRadius = (yCord*yCord)+(xCord*xCord);
-
-					radius = Math.sqrt(squareRadius);
-					return radius;
-
-				}
+	public double getRadius() throws NoEndPointException {			
+				if(super.points[1] == null)
+					throw new NoEndPointException("The circle has no end point, it's radius can not be calculated");
 				else {
-					xCord = super.points[1].getValueX() - super.points[0].getValueX();
-					if(super.points[0].getValueY() > super.points[1].getValueY())
-						yCord = super.points[0].getValueY() - super.points[1].getValueY();
-					else {
-						yCord = super.points[1].getValueY() - super.points[0].getValueY();
-					}
-					squareRadius = (yCord*yCord)+(xCord*xCord);
-
-					radius = Math.sqrt(squareRadius);
-					return radius;
+				
+					double x = Math.abs(super.points[0].getX() - super.points[1].getX());
+					double y = Math.abs(super.points[0].getY() - super.points[1].getY());
+					
+				    return Math.sqrt(((Math.pow(x, 2) + Math.pow(y, 2))));		
 				}
-			}catch(NullPointerException e){ throw new NoEndPointException("The circle has no end point, it's radius can not be calculated");}
 		}
 
 
@@ -84,18 +60,23 @@ public class Circle extends Shape{
 	@Override
 	public double getCircumference() throws NoEndPointException {
 
-		try {
-			return(getRadius()*2)*PI;
-		}catch(NullPointerException e){ throw new NoEndPointException("The circle has no end point, it's circumference can not be calculated");}
+		  if (points[0] == null || points[1] == null) {
+			  throw new NoEndPointException("The circle has no end point, it's circumference can not be calculated");
+		  }
+		  
+		  return(getRadius()*2)*PI;
+
 	}
 
 
 	@Override
 	public double getArea() throws NoEndPointException {
+		  if (points[0] == null || points[1] == null) {
+			  throw new NoEndPointException("The circle has no end point, it's area can not be calculated");
+		  }
+		  
+		  return Math.pow(getRadius(), 2)*PI;
 
-		try {
-			return (getRadius()*getRadius())*PI;
-		}catch(NullPointerException e){ throw new NoEndPointException("The circle has no end point, it's area can not be calculated");}
 	}
 
 	public String toString() {

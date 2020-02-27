@@ -17,7 +17,6 @@ import java.util.*;
 abstract class Shape implements Drawable{
 
 	protected String color;
-	//protected Point[] points = new Point[2];
 	protected ArrayList<Point> points = new ArrayList<Point>();
 	
 	

@@ -27,34 +27,20 @@ public class Rectangle extends Shape {
 		
 	}
 	
-	public double getWidth() {
-		double width;
-		if(points[0].getValueX() > points[1].getValueX()) {
-			width = points[0].getValueX() - points[1].getValueX();
+	public double getWidth() {	
+		if(points[1] == null) {
+			return -1;
 		}
-		else {
-			width = points[1].getValueX() - points[0].getValueX();
-		}
-			
-	
-		
-		return width;
+		return Math.abs(points[0].getX() - points[1].getX());
 	}
 	
 	
 	public double getHeight()
 	{
-		double height;
-		if(super.points[0].getValueX() > super.points[1].getValueX()) {
-			height = super.points[0].getValueY() - super.points[1].getValueY();
+		if(points[1] == null) {
+			return -1;
 		}
-		else {
-			height = super.points[1].getValueY() - super.points[0].getValueY();
-		}
-			
-	
-		
-		return height;
+		return Math.abs(points[0].getY() - points[1].getY());
 	}
 
 
@@ -74,23 +60,21 @@ public class Rectangle extends Shape {
 
 	@Override
 	public double getCircumference() {
-		
-		if(getHeight() > 0 && getWidth() > 0) {
-			return (getHeight()*2)+(getWidth()*2);
-		}
-		else
+		if(points[0] == null || points[1] == null) {
 			return -1;
+		}
 		
+		return (getHeight() * 2) + (getWidth() * 2);
 	}
 
 
 	@Override
 	public double getArea() {
-		if(getHeight() > 0 && getWidth() > 0) {
-		return getHeight()*getWidth();
-		}
-		else
+		if(points[0] == null || points[1] == null) {
 			return -1;
+		}
+		
+		return getHeight() * getWidth();
 	}
 	
 	

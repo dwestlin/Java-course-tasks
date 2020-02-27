@@ -12,39 +12,39 @@ package dt062g.dawe1103.assignment4;
 public class Point {
 
 	
-	public double valueX;
-	public double valueY;
+	public double X;
+	public double Y;
 	
-	public double getValueX() {
-		return valueX;
+	public double getX() {
+		return X;
 	}
 
-	public void setValueX(double x) {
-		valueX = x;
+	public void setX(double x) {
+		X = x;
 	}
 
-	public double getValueY() {
-		return valueY;
+	public double getY() {
+		return Y;
 	}
 
-	public void setValueY(double y) {
-		valueY = y;
+	public void setY(double y) {
+		Y = y;
 	}
 
 	public Point()
 	{
-		valueX = 0;
-		valueY = 0;
+		X = 0;
+		Y = 0;
 	}
 	
 	public Point(double x, double y)
 	{
-		this.valueX = x;
-		this.valueY = y;
+		this.X = x;
+		this.Y = y;
 	}
 	
 	public String toString() {
-		return "(" +valueX + ", " + valueY + ")";
+		return "(" +X + ", " + X + ")";
 		
 	}
 	

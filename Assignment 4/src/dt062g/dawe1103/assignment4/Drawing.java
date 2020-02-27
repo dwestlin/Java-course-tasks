@@ -22,15 +22,13 @@ public class Drawing implements Drawable{
 	private ArrayList<Shape> shapes;
 	
 	public Drawing() {
-		name = "";
-		author = "";
-		shapes = new ArrayList<Shape>(2);
+		shapes = new ArrayList<Shape>();
 	}
 	
 	public Drawing(String name, String author) {
 		this.name = name;
 		this.author = author;
-		shapes = new ArrayList<Shape>(2);
+		shapes = new ArrayList<Shape>();
 	}
 	
 	public String getName() {return name;}
